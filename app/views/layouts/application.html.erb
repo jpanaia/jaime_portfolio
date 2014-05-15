@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JaimePortfolio</title>
+  <title>Jaime's Awesome Portfolio</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<a href="/">Home</a>
+<%=link_to 'Blog', blogs_path %>
+<%=link_to 'Blog Posts', blog_posts_path %>
+<%=link_to 'Comments', comments_path %>
 <%= yield %>
 
 </body>

@@ -1,28 +1,24 @@
-<h1>Listing blog_posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Article</th>
-      <th>Blog</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
     <% @blog_posts.each do |blog_post| %>
-      <tr>
-        <td><%= blog_post.subject %></td>
-        <td><%= blog_post.article %></td>
-        <td><%= blog_post.blog.blog_name %></td>
-        <td><%= link_to 'Show', blog_post %></td>
-        <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
-        <td><%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img data-src="holder.js/300x200" alt="...">
+            <div class="caption">
+              <h3><%= blog_post.subject %></h3>
+              <p><%= blog_post.article %></p>
+              <!--   <a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a> -->
+
+              <%= link_to 'Read More...', blog_post, :class => "btn btn-primary" %>
+
+               <p><%= link_to 'Edit', edit_blog_post_path(blog_post) %>
+              | <%= link_to 'Delete', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </p>
+             <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
+            </div>
+          </div>
+        </div>
     <% end %>
-  </tbody>
-</table>
+</div>          
 
 <br>
 

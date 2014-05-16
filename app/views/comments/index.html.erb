@@ -3,18 +3,18 @@
 
 
     <% @comments.each do |comment| %>
-        
-        <p><%= comment.comment %></p>
-        <p><small>by <%= comment.author %></small></p>
-        <p><small><%= comment.created_at.strftime("%b %d, %Y") %></small></p>
-<!--         <p><%= comment.blog_post_id %></p>
- -->        <p><%= link_to 'Show', comment %>
-        | <%= link_to 'Edit', edit_comment_path(comment) %>
-        | <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <p><%= comment.comment %></p>
+          <p><small>by <%= comment.author %></small></p>
+          <p><small><%= comment.created_at.strftime("%b %d, %Y") %></small></p>
+  <!--         <p><%= comment.blog_post_id %></p>
+   -->        <p><%= link_to 'Show', comment %>
+          | <%= link_to 'Edit', edit_comment_path(comment) %>
+          | <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          </div>
+        </div>
     <% end %>
-
-
 <br>
 
 <%= link_to 'New Comment', new_comment_path %>

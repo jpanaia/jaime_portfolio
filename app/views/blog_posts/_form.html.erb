@@ -13,17 +13,18 @@
 
   <div class="field">
     <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
+    <%= f.text_field :subject, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :article %><br>
-    <%= f.text_area :article %>
+    <%= f.text_area :article, :class => "form-control" %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :blog_id %><br>
-    <%= f.select :blog_id, Blog.all.collect {|blog| [ blog.blog_name, blog.id] } %>
-  </div>
+    <%= f.select :blog_id, Blog.all.collect {|blog| [ blog.blog_name, blog.id] }, :class => "form-control" %>
+  </div> -->
+  <br/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
   </div>
 <% end %>

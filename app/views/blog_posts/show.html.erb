@@ -15,5 +15,16 @@
   <%= @blog_post.blog.blog_name %>
 </p>
 
+<h3>Comments</h3>
+
+<% @comments.each do |comment| %>
+	<p><%= comment.comment%></p>
+	<p>by <%= comment.author%></p>
+<%end%>
+
+
+
+<p><%= link_to 'Add a Comment', new_comment_path %></p>
+
 <%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
 <%= link_to 'Back', blog_posts_path %>

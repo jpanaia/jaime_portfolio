@@ -5,7 +5,7 @@
             <img src="http://placehold.it/640x480">
             <div class="caption">
               <h3><%= blog_post.subject %></h3>
-              <p><%= blog_post.created_at %></p>
+              <p><%= blog_post.created_at.strftime("%b %d, %Y") %></p>
               <p class="truncate"><%= blog_post.article %></p>
               <%= link_to 'Read More...', blog_post, :class => "btn btn-primary" %>
               <p><%= link_to 'Edit', edit_blog_post_path(blog_post) %>

@@ -1,12 +1,14 @@
-<h1>Listing comments</h1>
+<h1>Listing all comments</h1>
+<p>should probs limit this to JUST Jaime's Blog </p>
 
 
     <% @comments.each do |comment| %>
-      
-        <p>by <%= comment.author %></p>
+        
         <p><%= comment.comment %></p>
-        <p><%= comment.blog_post.subject %></p>
-        <p><%= link_to 'Show', comment %>
+        <p><small>by <%= comment.author %></small></p>
+        <p><small><%= comment.created_at.strftime("%b %d, %Y") %></small></p>
+<!--         <p><%= comment.blog_post_id %></p>
+ -->        <p><%= link_to 'Show', comment %>
         | <%= link_to 'Edit', edit_comment_path(comment) %>
         | <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       

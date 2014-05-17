@@ -14,9 +14,15 @@
 <p><%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
 <%= link_to 'Back', blog_posts_path %></p>
 
-<h3>Comments</h3>
-<p><a href="#">Comments <span class="badge"><%= @blog_post.num_comments %></span></a></p>
-<p><%= link_to 'Add a Comment', new_comment_path %></p>
+<h3>Comments 
+<span class="badge">
+  <% if @blog_post.num_comments == nil %>
+    0
+  <% else %>
+    <%= @blog_post.num_comments %>
+  <% end %>
+</span>
+</h3>
 
 <% @comments.each do |comment| %>
 	<div class="panel panel-default">

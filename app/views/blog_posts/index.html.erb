@@ -7,7 +7,14 @@
               <h3><%= blog_post.subject %></h3>
               <p><small><%= blog_post.created_at.strftime("%b %d, %Y") %></small></p>
               <p class="truncate"><%= blog_post.article %></p>        
-              <p><a href="#">Comments <span class="badge"><%= blog_post.num_comments %></span></a></p>
+              <p>Comments <span class="badge">
+                  <% if blog_post.num_comments == nil %>
+                    0
+                  <% else %>
+                    <%= blog_post.num_comments %>
+                  <% end %>
+                </span>
+              </p>
               <%= link_to 'Read More...', blog_post, :class => "btn btn-primary" %>
 
               <p><%= link_to 'Edit', edit_blog_post_path(blog_post) %>

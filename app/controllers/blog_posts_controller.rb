@@ -30,6 +30,7 @@ class BlogPostsController < ApplicationController
 
     respond_to do |format|
       if @blog_post.save
+
         format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
         format.json { render :show, status: :created, location: @blog_post }
       else
@@ -71,6 +72,6 @@ class BlogPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_post_params
-      params.require(:blog_post).permit(:subject, :article, :blog_id)
+      params.require(:blog_post).permit(:subject, :article, :blog_id, :num_comments)
     end
 end

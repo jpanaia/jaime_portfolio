@@ -5,16 +5,19 @@
             <img src="http://placehold.it/640x480">
             <div class="caption">
               <h3><%= blog_post.subject %></h3>
-              <p><small><%= blog_post.created_at.strftime("%b %d, %Y") %></small></p>
-              <p class="truncate"><%= blog_post.article %></p>        
-              <p>Comments <span class="badge">
+              <p class="">By <%= blog_post.author %></p>
+              <p class="truncate"><%= blog_post.article %></p> 
+              <div class="row">
+                <div class="col-xs-6"><%= blog_post.created_at.strftime("%b %d, %Y") %></div>
+                <div class="col-xs-6"><p><!-- Comments <span class="badge"> -->
                   <% if blog_post.num_comments == nil %>
-                    0
+                    No Comments
                   <% else %>
-                    <%= blog_post.num_comments %>
+                    <a href="#"><%= blog_post.num_comments %> Comments</a>
                   <% end %>
-                </span>
-              </p>
+                <!-- </span> -->
+                </p></div>
+              </div>
               <%= link_to 'Read More...', blog_post, :class => "btn btn-primary" %>
 
               <p><%= link_to 'Edit', edit_blog_post_path(blog_post) %>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="alert alert-success"><%= notice %></p>
 
 
 <h1><%= @blog_post.subject %></h1>
@@ -14,15 +14,16 @@
 <p><%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
 <%= link_to 'Back', blog_posts_path %></p>
 
-<h3>Comments 
-<span class="badge">
-  <% if @blog_post.num_comments == nil %>
-    0
-  <% else %>
-    <%= @blog_post.num_comments %>
-  <% end %>
-</span>
-</h3>
+<h3>Comments</h3>
+<span class="comment-count">
+	<% if @blog_post.num_comments == nil %>
+		No Comments
+	<% elsif @blog_post.num_comments == 1 %>
+		<a href="#"><%= @blog_post.num_comments %> Comment</a>
+	<% else %>
+		<a href="#"><%= @blog_post.num_comments %> Comments</a>
+	<% end %>
+</span></p>
 
 <% @comments.each do |comment| %>
 	<div class="panel panel-default">

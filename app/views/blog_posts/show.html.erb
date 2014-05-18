@@ -1,7 +1,8 @@
 <p id="notice" class="alert alert-success"><%= notice %></p>
 
 
-<h1><%= @blog_post.subject %></h1>
+<h2><%= @blog_post.subject %></h2>
+<p class="author">by <%= @blog_post.author %></p>
 <p><small><%= @blog_post.created_at.strftime("%b %d, %Y") %></small></p>
 <p><%= @blog_post.article %></p>
 

@@ -14,7 +14,34 @@
  *= require_self
  */
 
-span.comment-count {
-background: url(images/icon-comment-count-2x.png) top left no-repeat;
-background-size: 20px 20px;
+
+ h2{
+ 	font-family: 'Oswald', sans-serif!important;
+ }
+ 	h2 a {
+ 		color: #333
+ 	}
+
+ 	h2 a:hover {
+ 		color: #58a6bc;
+ 		text-decoration: none;
+ 	}
+
+ body {
+ 	font-family: 'Open Sans', sans-serif!important;
+ }
+
+.date, .comments a, .no-comments {
+	color: #c3c2be;
+	font-size: .85em;
+	text-transform:uppercase;
+}
+
+	.comments a:hover {
+		color: #90908b;
+		text-decoration: none;
+	}
+
+.author {
+	margin: 20px 0;
 }

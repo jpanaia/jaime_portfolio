@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
       if @comment.save
         update_comments_count(comment_params[:blog_post_id])
 
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment.blog_post, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

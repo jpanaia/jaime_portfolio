@@ -4,8 +4,7 @@
 <h2><%= @blog_post.subject %></h2>
 <p class="author">by <%= @blog_post.author %></p>
 <p><small><%= @blog_post.created_at.strftime("%b %d, %Y") %></small></p>
-<p><%= @blog_post.article %></p>
-
+<%= @blog_post.article %>
 
 <!-- <p>
   <strong>Blog:</strong>
@@ -16,21 +15,56 @@
 <%= link_to 'Back', blog_posts_path %></p>
 
 
-<h3>Comments
-<span class="badge">
-	<% if @blog_post.num_comments == nil %>
-		0
+<a name ="#comments"></a>
+<!-- Show existing comments -->
+<h3> <% if @blog_post.num_comments == nil || @blog_post.num_comments == 0 %>
+		No Comments
+	 <% elsif @blog_post.num_comments == 1 %>
+		<%= @blog_post.num_comments %> Comment
 	<% else %>
-		<%= @blog_post.num_comments %> 
+		<%= @blog_post.num_comments %> Comments
 	<% end %>
-</span></h3>
+</h3>
 
-<% @comments.each do |comment| %>
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<p><%= comment.comment%></p>
-			<p><%= comment.created_at.strftime("%b %d, %Y") %></p>
-			<p>by <%= comment.author%></p>
+<% if @blog_post.num_comments == nil || @blog_post.num_comments == 0 %>
+	No comments.
+<% else %>
+	<% @comments.each do |comment| %>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p><%= comment.comment%></p>
+				<p><%= comment.created_at.strftime("%b %d, %Y") %></p>
+				<p>by <%= comment.author%></p>
+			</div>
 		</div>
-	</div>
-<%end%>
+	<%end%>
+<% end %>
+
+<h3>Submit a Comment</h3>
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment, :class => "form-control" %>
+  </div>
+   <%= f.hidden_field :blog_post_id, :value => @blog_post.id %>
+  <br/>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

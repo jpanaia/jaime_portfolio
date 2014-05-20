@@ -16,10 +16,3 @@
 //= require_tree .
 
 
-$(document).ready(function() {
-    $('.truncate').succinct({
-        size: 120
-    });
-
-    var myCodeMirror = CodeMirror(document.body);
-});

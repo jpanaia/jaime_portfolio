@@ -6,7 +6,7 @@
             <div class="caption">
               <h2><%= link_to blog_post.subject, blog_post %></h2>
               <p class="author">by <%= blog_post.author %></p>
-              <p class="truncate"><%= blog_post.article %></p> 
+              <div class="truncate"><%= blog_post.article.html_safe %></div> 
               <div class="row">
                 <div class="col-xs-6"> <%= image_tag('icon-posted-time.png') %> <span class="date"><%= blog_post.created_at.strftime("%b %d, %Y") %></span></div>
                 <div class="col-xs-6"><p><!-- Comments <span class="badge"> -->
@@ -14,9 +14,9 @@
                   <% if blog_post.num_comments == nil %>
                     <span class="no-comments">No Comments</span>
                   <% elsif blog_post.num_comments == 1 %>
-                      <span class="comments"><a href="#"><%= blog_post.num_comments %> Comment</a></span>
+                      <span class="comments"><a href="/blog_posts/<%= blog_post.id %>/#comments">1 Comment</a></span>
                   <% else %>
-                       <span class="comments"><a href="#"><%= blog_post.num_comments %> Comments</a></span>
+                       <span class="comments"><a href="/blog_posts/<%= blog_post.id %>/#comments"><%= blog_post.num_comments %> Comments</a></span>
                   <% end %>
                 </span>
                 <!-- </span> -->

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'user/create'
+
+  get 'user/user_params'
+
   devise_for :users
   get 'welcome/index' => 'welcome#index'
 

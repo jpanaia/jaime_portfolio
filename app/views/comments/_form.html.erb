@@ -19,10 +19,10 @@
     <%= f.label :comment %><br>
     <%= f.text_area :comment, :class => "form-control" %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :blog_post_id %><br>
     <%= f.select :blog_post_id, BlogPost.all.collect {|blog_post| [ blog_post.subject, blog_post.id] }, :class => "form-control" %>
-  </div>
+  </div> -->
   <br/>
   <div class="actions">
     <%= f.submit :class => "btn btn-primary" %>

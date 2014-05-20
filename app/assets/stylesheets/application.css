@@ -46,3 +46,11 @@
 .author {
 	margin: 20px 0;
 }
+
+.text-area{
+	width:90%;
+}
+
+.truncate {
+	margin:10px 0 20px;
+}

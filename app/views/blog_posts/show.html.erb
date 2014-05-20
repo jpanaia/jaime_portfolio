@@ -4,18 +4,14 @@
 <h2><%= @blog_post.subject %></h2>
 <p class="author">by <%= @blog_post.author %></p>
 <p><small><%= @blog_post.created_at.strftime("%b %d, %Y") %></small></p>
-<%= @blog_post.article %>
-
-<!-- <p>
-  <strong>Blog:</strong>
-  <%= @blog_post.blog.blog_name %>
-</p> -->
+<%= image_tag @blog_post.avatar.url(:medium) %>
+<%= @blog_post.article.html_safe %>
 
 <p><%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
 <%= link_to 'Back', blog_posts_path %></p>
 
 
-<a name ="#comments"></a>
+<a name ="comments"></a>
 <!-- Show existing comments -->
 <h3> <% if @blog_post.num_comments == nil || @blog_post.num_comments == 0 %>
 		No Comments
@@ -63,6 +59,7 @@
     <%= f.text_area :comment, :class => "form-control" %>
   </div>
    <%= f.hidden_field :blog_post_id, :value => @blog_post.id %>
+
   <br/>
   <div class="actions">
     <%= f.submit :class => "btn btn-primary" %>

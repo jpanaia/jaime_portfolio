@@ -15,4 +15,16 @@
 //= require turbolinks
 //= require_tree .
 
+$(document).ready(function() {
+    $('.truncate').succinct({
+        size: 120
+    });
+
+    // $('textarea').each(function() {
+    //      var editor = CodeMirror.fromTextArea(this, {
+    //          matchBrackets : true
+    //      });
+    //  })
+});
+
 

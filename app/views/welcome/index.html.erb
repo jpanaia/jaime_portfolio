@@ -1,11 +1,32 @@
-<h1>Jaime's Portfolio</h1>
 
  <% if user_signed_in? %>
+
+ <h2>Welcome Back</h2>
+   <p>You are logged in as <%= current_user.email %></p>
+
 
   <%= link_to "Sign out",destroy_user_session_path, method: :delete, class: "button" %>
 
   <% else %>
 
-  <%= link_to "Sign in",new_user_session_path %>
+<h2>Welcome, please sign in</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	  <div><%= f.label :email %><br />
+	  <%= f.email_field :email, autofocus: true %></div>
 
+	  <div><%= f.label :password %><br />
+	    <%= f.password_field :password, autocomplete: "off" %></div>
+
+	  <% if devise_mapping.rememberable? -%>
+	    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+	  <% end -%>
+
+	  <div><%= f.submit "Sign in" %></div>
+	<% end %>
+
+	<a href="/users/sign_up">Sign Up</a> 
+
+
+<!--   <%= link_to "Sign in",new_user_session_path %>
+ -->
   <% end %>

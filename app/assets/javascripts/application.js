@@ -15,8 +15,11 @@
 //= require turbolinks
 //= require_tree .
 
- $(function(){
-        $('.truncate').succinct({
-            size: 120
-        });
+
+$(document).ready(function() {
+    $('.truncate').succinct({
+        size: 120
     });
+
+    var myCodeMirror = CodeMirror(document.body);
+});

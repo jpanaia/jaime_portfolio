@@ -29,6 +29,7 @@
 
  body {
  	font-family: 'Open Sans', sans-serif!important;
+ 	background: #f3f3f3!important
  }
 
 .date, .comments a, .no-comments {

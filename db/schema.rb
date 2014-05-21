@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520202348) do
+ActiveRecord::Schema.define(version: 20140520205800) do
 
   create_table "blog_posts", force: true do |t|
     t.string   "subject"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20140520202348) do
     t.datetime "updated_at"
     t.integer  "num_comments"
     t.string   "author"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "blogs", force: true do |t|

@@ -2,8 +2,10 @@
     <% @blog_posts.each do |blog_post| %>
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
-            <%= image_tag('rails.png', width:'640px')%>
-            <div class="caption">
+              <% if blog_post.avatar_file_name != nil %>
+                  <%= image_tag blog_post.avatar %>
+              <% end %>
+              <div class="caption">
               <h2><%= link_to blog_post.subject, blog_post %></h2>
               <p class="author">by <%= blog_post.author %></p>
               <div class="truncate"><%= blog_post.article.html_safe %></div> 

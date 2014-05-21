@@ -26,6 +26,8 @@ class BlogPostsController < ApplicationController
 
   # GET /blog_posts/1/edit
   def edit
+    @blog_post.author = current_user.first_name
+    @blog_post.save
   end
 
   # POST /blog_posts

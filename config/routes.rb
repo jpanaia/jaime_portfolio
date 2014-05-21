@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'user/user_params'
 
+  get 'blog_posts/load_blog_posts'
+
   devise_for :users
   get 'welcome/index' => 'welcome#index'
 

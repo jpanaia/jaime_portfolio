@@ -1,0 +1,28 @@
+<h1>Load Blog Posts</h1>
+
+<script type ="text/javascript">
+	function loadBlogPosts() {
+
+		$.getJSON("/blog_posts.json", function(data){
+			// console.log(data)
+
+			var html = "";
+
+			$.each(data, function(index){
+
+				html += "<b>" + data[index].subject + "</b><br/>";
+
+			});
+			// alert(html);
+			$('#blog_posts a').html(html);
+		});
+
+
+	}
+</script>
+
+<div id="blog_posts" name="blog_posts">
+		<a href="javascript:loadBlogPosts();">
+			This is where the blog posts go
+	   </a>
+</div>

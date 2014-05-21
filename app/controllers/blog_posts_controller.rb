@@ -16,6 +16,9 @@ class BlogPostsController < ApplicationController
       @comment = Comment.new
   end
 
+  def load_blog_posts
+  end
+
   # GET /blog_posts/new
   def new
     @blog_post = BlogPost.new

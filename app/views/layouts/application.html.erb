@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Jaime's Portfolio</a>
+      <a class="navbar-brand" href="/">Jaime's Portfolio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,11 +30,21 @@
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
         <li><%=link_to 'Blog Posts', blog_posts_path %></li>
+        <li><%=link_to 'Contact', contact_path %></li>
         <!--<li><%=link_to 'Blog', blogs_path %></li>-->
-        <li><%=link_to 'Comments', comments_path %></li>
-       </ul>
+        <!-- <li><%=link_to 'Comments', comments_path %></li>-->       
+      </ul>
   </div><!-- /.container-fluid -->
 </nav>
+
+<p style="padding:20px;background:#ccc;width:100%">
+<% if user_signed_in? %>
+  You are logged in as <%= current_user.email %> |
+  <%= link_to "Sign out",destroy_user_session_path, method: :delete, class: "button" %>
+<% else %>
+  <a href="/users/sign_up">Sign up</a> or <a href="/users/sign_in">Sign in</a> 
+<% end %>
+</p>
 
 <div class="container-fluid">
 <%= yield %>

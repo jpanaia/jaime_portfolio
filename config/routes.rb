@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+    
+  get 'welcome/index' 
+
+  root 'welcome#index'
+
+  get '/contact' => 'inquiries#new'
+
   get 'user/create'
 
   get 'user/user_params'
@@ -6,15 +13,16 @@ Rails.application.routes.draw do
   get 'blog_posts/load_blog_posts'
 
   devise_for :users
-  get 'welcome/index' => 'welcome#index'
-
-  root 'welcome#index'
 
   resources :comments
 
   resources :blog_posts
 
   resources :blogs
+
+  resources :inquiries, :only => [:new, :create] do
+    get 'thank_you', :on => :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

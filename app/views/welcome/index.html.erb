@@ -23,8 +23,17 @@
   <div class="col-xs-6 col-sm-4"><div class="panel panel-default">
   			<div class="panel-body">
   				<span class="label label-warning">Latest Tweets</span>
-
   					<h2>Chatter</h2>
+					  <ul>
+              <% @tweet_news.each do |f| %>
+                <li>
+
+                  <%= auto_link(f.text).html_safe %><br/>
+                  <p><%= time_ago_in_words(f.created_at) %> ago</p>
+                </li>
+              <% end %>
+            </ul>
   			</div>
-  		</div></div>
+  		</div>
+  	</div>
 </div>

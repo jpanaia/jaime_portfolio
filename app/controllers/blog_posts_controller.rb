@@ -1,7 +1,7 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
   
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
   # GET /blog_posts
   # GET /blog_posts.json
   def index
@@ -14,6 +14,9 @@ class BlogPostsController < ApplicationController
       @blog_post = BlogPost.find(params[:id])
       @comments = @blog_post.comments
       @comment = Comment.new
+
+      # require the ability to read blog posts
+      # authorize! :read, @blog_post
   end
 
   def load_blog_posts
@@ -34,6 +37,11 @@ class BlogPostsController < ApplicationController
   # POST /blog_posts.json
   def create
     @blog_post = BlogPost.new(blog_post_params)
+
+    @blog_post.user_id = current_user.id
+    @blog_post.author = current_user.first_name
+
+    UserMailer.send_email(@blog_post).deliver
 
     respond_to do |format|
       if @blog_post.save
@@ -79,6 +87,6 @@ class BlogPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_post_params
-      params.require(:blog_post).permit(:subject, :article, :blog_id, :num_comments, :author, :avatar)
+      params.require(:blog_post).permit(:subject, :article, :blog_id, :num_comments, :author, :avatar, :user_id)
     end
 end

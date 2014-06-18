@@ -25,10 +25,11 @@
                 </p></div>
               </div>
 <!--               <%= link_to 'Read More...', blog_post, :class => "btn btn-primary" %>
- -->
+ -->        <% if user_signed_in? %>
               <p><%= link_to 'Edit', edit_blog_post_path(blog_post) %>
               | <%= link_to 'Delete', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
               </p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -37,5 +38,5 @@
 
 <br>
 
-<div align="center"><%= link_to 'New Blog post', new_blog_post_path, :class => "btn btn-danger" %></div>
+ <% if user_signed_in? %> <div align="center"><%= link_to 'New Blog post', new_blog_post_path, :class => "btn btn-danger" %></div> <<%end %>
 <br/><br/>
